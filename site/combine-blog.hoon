@@ -84,7 +84,7 @@
           ;div(class "layout-narrow px-4 md:px-8 lg:px-0 lg:w-3/4")
             ;h1(class "py-20"): Blog 
             ;*  previews
-            ;*  ~[bottom-nav]
+            :: ;*  ~[bottom-nav]
           ==
           ;*  ~[side-nav]
         ==
@@ -96,7 +96,7 @@
   ^-  [manx tape]
   =/  title=content  (snag 0 contents.post)
   ?>  ?=(%text -.title)
-  =/  url=tape  ;:(weld home "/" (trip (strip-title text.title)))
+  =/  url=tape  (weld home (trip (strip-title text.title)))
   :-  ;li(class "mb-2")
         ;a(href url, class "font-semibold text-green-400")
           {(trip text.title)}
@@ -105,7 +105,7 @@
     home
 ++  side-nav
   |=  [posts=(list [@da post (list post)]) pax=path]
-  =/  home-url  (spud pax)
+  =/  home-url  ?~  pax  "/"  (spud pax)
   ^-  manx
   ;aside(class "index-sidebar")
     ;h3(class "mb-5"): Index
@@ -152,13 +152,13 @@
 ++  header
   |=  [=binding:eyre title=@t lit=?]
   ^-  manx
-  =/  home-url  (spud path.binding)
+  =/  home-url  ?~  path.binding  "/"  (spud path.binding)
   :: TODO make this narrower
   ;header(class "layout w-full flex justify-between items-center px-4 md:px-6 lg:px-0 pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24 z-10")
     ;div
       :: taking this back to the static site for now
       ::;a(href home-url, class "font-semibold text-lg"): The Combine DAO
-      ;a(href "https://the-combing.org", class "font-semibold text-lg"): The Combine DAO
+      ;a(href "https://the-combine.org", class "font-semibold text-lg"): The Combine DAO
     ==
     ;nav(class "items-center hidden md:flex")
       ;a(href "https://the-combine.org/#teams", class "font-semibold text-lg mr-5 text-wall-500"): For Teams
