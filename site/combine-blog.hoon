@@ -242,7 +242,9 @@
       ;meta(name "twitter:card", content "summary_large_image");
       ;meta(name "twitter:title", content "{(trip title)}");
       ;meta(name "twitter:image", content "{(trip prev-img)}");
-      ;meta(name "twitter:description", content "{(trip (fall snippet title))}");
+      ::;meta(name "twitter:description", content "{(trip (fall snippet title))}");
+			:: hardcoding this for now because showing markdown is terrible
+      ;meta(name "twitter:description", content "Inside the mind of the Combine");
       ;link(rel "stylesheet", href "https://rsms.me/inter/inter.css");
       ;link(href "https://storage.googleapis.com/the-combine/styles.css", rel "stylesheet");
       ;meta(name "viewport", content "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0");
