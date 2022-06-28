@@ -1,6 +1,3 @@
-::  TODO
-::  nav frame
-::  make nav links work
 /-  *pipe, *post, store=graph-store, metadata-store
 /+  *pipe-render, cram, imgur
 ^-  $-(site-inputs website)
