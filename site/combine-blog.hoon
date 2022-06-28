@@ -77,6 +77,10 @@
       ;meta(name "viewport", content "width=device-width, initial-scale=1, maximum-scale=1");
       ;link(rel "stylesheet", href "https://rsms.me/inter/inter.css");
       ;link(href "https://storage.googleapis.com/the-combine/styles.css", rel "stylesheet");
+      ;meta(name "twitter:card", content "summary_large_image");
+      ;meta(name "twitter:title", content "The Combine DAO Blog");
+      ;meta(name "twitter:image", content "https://friends.sfo2.digitaloceanspaces.com/famreb-todmec/2022.5.27..17.10.10-logo-no-word.png");
+      ;meta(name "twitter:description", content "Inside the mind of the Combine DAO");
     ==
     ;+  %^  frame  lit.si  width.si
     ;=  ;*  ~[(header binding.si title.metadatum.association.si lit.si)]
@@ -243,8 +247,8 @@
       ;meta(name "twitter:title", content "{(trip title)}");
       ;meta(name "twitter:image", content "{(trip prev-img)}");
       ::;meta(name "twitter:description", content "{(trip (fall snippet title))}");
-			:: hardcoding this for now because showing markdown is terrible
-      ;meta(name "twitter:description", content "Inside the mind of the Combine");
+      :: hardcoding this for now because showing markdown is terrible
+      ;meta(name "twitter:description", content "Inside the mind of the Combine DAO");
       ;link(rel "stylesheet", href "https://rsms.me/inter/inter.css");
       ;link(href "https://storage.googleapis.com/the-combine/styles.css", rel "stylesheet");
       ;meta(name "viewport", content "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0");
