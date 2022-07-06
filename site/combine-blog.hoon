@@ -77,6 +77,7 @@
       ;meta(name "viewport", content "width=device-width, initial-scale=1, maximum-scale=1");
       ;link(rel "stylesheet", href "https://rsms.me/inter/inter.css");
       ;link(href "https://storage.googleapis.com/the-combine/styles.css", rel "stylesheet");
+      ;+  custom-style
     ==
     ;+  %^  frame  lit.si  width.si
     ;=  ;*  ~[(header binding.si title.metadatum.association.si lit.si)]
@@ -227,9 +228,6 @@
   =/  snippet=(unit @t)  (snip contents.post.ai)
   =/  prev-img
     ?~  (imgur (get-text contents.post.ai))  ''  (snag 0 (imgur (get-text contents.post.ai)))
- ::
-  ::
-  ::
   :-  [%text %html ~]
   %-  as-octt:mimes:html
   %+  welp  "<!doctype html>"
@@ -247,6 +245,7 @@
       ;link(href "https://storage.googleapis.com/the-combine/styles.css", rel "stylesheet");
       ;meta(name "viewport", content "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0");
       ;title: {(trip title)} • by {(trip (scot %p author.post.ai))}
+      ;+  custom-style
     ==
     ;+  %^  frame  lit.ai  width.ai
     ;=  ;*  ~[(header binding.ai title.metadatum.association.ai lit.ai)]
@@ -289,4 +288,11 @@
     ;p(class "gray f7 ma0 mt3", style "margin-block-end: 0;"): {deets}
     ;p(class "f6 ma0 mt1"): {(trip text.body)}
   ==
+++  custom-style
+  ^-  manx
+  ;style:'''
+         article main p {
+           text-indent: 2ch
+         }
+         '''
 --
