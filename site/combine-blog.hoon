@@ -1,6 +1,3 @@
-::  TODO
-::  nav frame
-::  make nav links work
 /-  *pipe, *post, store=graph-store, metadata-store
 /+  *pipe-render, cram, imgur
 ^-  $-(site-inputs website)
@@ -78,6 +75,10 @@
       ;link(rel "stylesheet", href "https://rsms.me/inter/inter.css");
       ;link(href "https://storage.googleapis.com/the-combine/styles.css", rel "stylesheet");
       ;+  custom-style
+      ;meta(name "twitter:card", content "summary_large_image");
+      ;meta(name "twitter:title", content "The Combine DAO Blog");
+      ;meta(name "twitter:image", content "https://friends.sfo2.digitaloceanspaces.com/famreb-todmec/2022.5.27..17.10.10-logo-no-word.png");
+      ;meta(name "twitter:description", content "Inside the mind of the Combine DAO");
     ==
     ;+  %^  frame  lit.si  width.si
     ;=  ;*  ~[(header binding.si title.metadatum.association.si lit.si)]
@@ -85,7 +86,7 @@
           ;div(class "layout-narrow px-4 md:px-8 lg:px-0 lg:w-3/4")
             ;h1(class "py-20"): Blog 
             ;*  previews
-            ;*  ~[bottom-nav]
+            :: ;*  ~[bottom-nav]
           ==
           ;*  ~[side-nav]
         ==
@@ -97,7 +98,7 @@
   ^-  [manx tape]
   =/  title=content  (snag 0 contents.post)
   ?>  ?=(%text -.title)
-  =/  url=tape  ;:(weld home "/" (trip (strip-title text.title)))
+  =/  url=tape  (weld home (trip (strip-title text.title)))
   :-  ;li(class "mb-2")
         ;a(href url, class "font-semibold text-green-400")
           {(trip text.title)}
@@ -106,7 +107,7 @@
     home
 ++  side-nav
   |=  [posts=(list [@da post (list post)]) pax=path]
-  =/  home-url  (spud pax)
+  =/  home-url  ?~  pax  "/"  (spud pax)
   ^-  manx
   ;aside(class "index-sidebar")
     ;h3(class "mb-5"): Index
@@ -153,13 +154,13 @@
 ++  header
   |=  [=binding:eyre title=@t lit=?]
   ^-  manx
-  =/  home-url  (spud path.binding)
+  =/  home-url  ?~  path.binding  "/"  (spud path.binding)
   :: TODO make this narrower
   ;header(class "layout w-full flex justify-between items-center px-4 md:px-6 lg:px-0 pt-8 md:pt-10 lg:pt-12 pb-10 md:pb-12 lg:pb-24 z-10")
     ;div
       :: taking this back to the static site for now
       ::;a(href home-url, class "font-semibold text-lg"): The Combine DAO
-      ;a(href "https://the-combing.org", class "font-semibold text-lg"): The Combine DAO
+      ;a(href "https://the-combine.org", class "font-semibold text-lg"): The Combine DAO
     ==
     ;nav(class "items-center hidden md:flex")
       ;a(href "https://the-combine.org/#teams", class "font-semibold text-lg mr-5 text-wall-500"): For Teams
@@ -240,7 +241,9 @@
       ;meta(name "twitter:card", content "summary_large_image");
       ;meta(name "twitter:title", content "{(trip title)}");
       ;meta(name "twitter:image", content "{(trip prev-img)}");
-      ;meta(name "twitter:description", content "{(trip (fall snippet title))}");
+      ::;meta(name "twitter:description", content "{(trip (fall snippet title))}");
+      :: hardcoding this for now because showing markdown is terrible
+      ;meta(name "twitter:description", content "Inside the mind of the Combine DAO");
       ;link(rel "stylesheet", href "https://rsms.me/inter/inter.css");
       ;link(href "https://storage.googleapis.com/the-combine/styles.css", rel "stylesheet");
       ;meta(name "viewport", content "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0");
